@@ -1,139 +1,168 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 
 <head>
-  <meta charset="utf-8">
-  <title>ЛигаА Главная</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,600&display=swap" rel="stylesheet">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="css/style.css" rel="stylesheet">
-  <script src="js/picturefill.min.js" async></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
-<body>
-   <!--  <input class="visually-hidden" type="radio" id="day" name="toggle" checked>
-    <input class="visually-hidden" type="radio" id="night" name="toggle">
--->
-  <div class="page-wrapper">
-
-    <header class="page-header">
-      <div class="page-header__logo">
-          <img class="page-header__top-logo" src="../img/small-liga.svg" width="104" height="24" alt="Лига А">
-      </div>
-
-      <nav class="main-nav main-nav--closed main-nav--nojs">
-        <ul class="main-nav__list">
-          <li class="main-nav__item">
-            <a class="main-nav__link  main-nav__link--active">Верстка</a>
+<body onLoad="renderTable()">
+  <h1>5-month trend</h1>
+  <section class="filter">
+    <h2 class="visually-hidden">Product Filter</h2>
+    <form method="get" action="/">
+      <fieldset class="filler">
+        <legend>Month:</legend>
+        <ul class="customize-form">
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="chocolate-filler"
+              value="chocolate" id="chocolate-filler" checked>
+            <label for="chocolate-filler">June</label>
           </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="/">Фронтенд</a>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="sugar-filler"
+              value="sugar" id="sugar-filler" checked>
+            <label for="sugar-filler">July</label>
           </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="/">Проекты</a>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="fruits-filler"
+              value="fruits" id="fruits-filler">
+            <label for="fruits-filler">August</label>
           </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="/">Команда</a>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="syrup-filler"
+              value="syrup" id="syrup-filler">
+            <label for="syrup-filler">September</label>
           </li>
-          <li class="main-nav__item">
-            <a class="main-nav__link" href="/">Контакты</a>
+          <li class="filler-option last-filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="jam-filler"
+              value="jam" id="jam-filler">
+            <label for="jam-filler">October</label>
           </li>
         </ul>
-        <button class="main-nav__toggle" type="button"><span class="visually-hidden">Открыть меню</span></button>
-      </nav>
+      </fieldset>
 
-      <div class="page-header__button">
-        <button class="page-header__button" type="button">Работать с нами</button>
-      </div>
-    </header>
+      <fieldset class="filler">
+        <legend>Item:</legend>
+        <ul class="customize-form">
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="chocolate-filler"
+              value="chocolate" id="chocolate-filler" checked>
+            <label for="chocolate-filler">Grapefruit</label>
+          </li>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="sugar-filler"
+              value="sugar" id="sugar-filler" checked>
+            <label for="sugar-filler">Orange</label>
+          </li>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="fruits-filler"
+              value="fruits" id="fruits-filler">
+            <label for="fruits-filler">Mango</label>
+          </li>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="syrup-filler"
+              value="syrup" id="syrup-filler">
+            <label for="syrup-filler">Banana</label>
+          </li>
+          <li class="filler-option last-filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="jam-filler"
+              value="jam" id="jam-filler">
+            <label for="jam-filler">Lemon</label>
+          </li>
+          <li class="filler-option last-filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="jam-filler"
+              value="jam" id="jam-filler">
+            <label for="jam-filler">Fuji Apple</label>
+          </li>
+          <li class="filler-option last-filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="jam-filler"
+              value="jam" id="jam-filler">
+            <label for="jam-filler">Gala Apple</label>
+          </li>
+        </ul>
+      </fieldset>
 
-    <main class="page-content">
-       <!-- <section class="slider">
-            <div class="slider-controls">
-               <label for="day">Day</label>
-               <label for="night">Night</label>
+      <fieldset class="filter-price">
+          <legend>Price: 0.01 $ – 5 $</legend>
+          <div class="customize-form">
+            <div class="range">
+              <div class="range-runner range-runner-left">
+                <div class="visually-hidden">
+                  <label for="range-left-field">Left</label>
+                  <input type="range" name="rangeLeft" id="range-left-field" min="0" max="0.05">
+                </div>
+              </div>
+              <div class="range-runner range-runner-right">
+                <div class="visually-hidden">
+                  <label for="range-right-field">Right</label>
+                  <input type="range" name="rangeRight" id="range-right-field" min="0.06" max="5">
+                </div>
+              </div>
             </div>
-            <ul class="slider-list">
-               <li class="slider-item slide" id="slide1">
-                  <h3 class="slide-title">
-                     Крем-брюле и пломбир с малиновым джемом
-                  </h3>
-                  <a class="button-slide slide-button" href="#">Давайте оба!</a>
-               </li>
-               <li class="slider-item slide" id="slide2">
-                  <h3 class="slide-title">
-                     Шоколадный пломбир и лимонный сорбет
-                  </h3>
-                  <a class="button-slide slide-button" href="#">Давайте оба!</a>
-               </li>
-               <li class="slider-item slide" id="slide3">
-                  <h3 class="slide-title">
-                     Пломбир с помадкой и клубничный щербет
-                  </h3>
-                  <a class="button-slide slide-button" href="#">Давайте оба!</a>
-               </li>
-            </ul>
-         </section>
--->
-      <section class="page-content__banner">
-        <img class="page-content__banner-big" src="img/dino.svg" width="170" height="192"
-          alt="Лига А Фронтенд аутсорс">
-      </section>
+          </div>
+        </fieldset>
 
-      <section class="page-intro">
-        <p class="page-intro__content">297 успешных проектов</p>
-        <p class="page-intro__content">2 дня на запуск?
-          <br>это про нас</p>
-      </section>
-
-      <section class="advantages">
-        <ul class="advantages__list">
-          <li class="advantages__item">
-            <p class="advantages__item-content">01</p>
-            <p class="advantages__item-content">Даём экспертизу и топим  за качество</p>
+      <fieldset class="filler">
+        <legend>Store:</legend>
+        <ul class="customize-form">
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="chocolate-filler"
+              value="chocolate" id="chocolate-filler" checked>
+            <label for="chocolate-filler">Casa Fruta</label>
           </li>
-          <li class="advantages__item">
-            <p class="advantages__item-content">02</p>
-            <p class="advantages__item-content">Привлекаем джуниоров для минимизации стоимости</p>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="sugar-filler"
+              value="sugar" id="sugar-filler" checked>
+            <label for="sugar-filler">Cornucopia</label>
           </li>
-          <li class="advantages__item">
-            <p class="advantages__item-content">03</p>
-            <p class="advantages__item-content">Гибкость и честность —  наше кредо</p>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="fruits-filler"
+              value="fruits" id="fruits-filler">
+            <label for="fruits-filler">Better Produce</label>
           </li>
-          <li class="advantages__item">
-            <p class="advantages__item-content">004</p>
-            <p class="advantages__item-content">Ценим ваши данные, работаем по договору и NDA</p>
-          </li>
-          <li class="advantages__item">
-            <p class="advantages__item-content">005</p>
-            <p class="advantages__item-content">Вы найдёте нас на профильных конференциях как докладчиков или
-              организаторов</p>
+          <li class="filler-option">
+            <input class="visually-hidden filter-input filler-input-checkbox" type="checkbox" name="syrup-filler"
+              value="syrup" id="syrup-filler">
+            <label for="syrup-filler">Valley Spread</label>
           </li>
         </ul>
-      </section>
+      </fieldset>
+      <button type="submit" class="filter-button">
+        Customize
+      </button>
+    </form>
+  </section>
 
-      <section class="testing">
-        <div class="testing-links">
-          <a class="testing-links__item" href="/">
-            Поиск ошибок
-            <img class="testing-links__icon" src="img/bugs-test.svg" width="39" height="39" alt="Поиск ошибок">
-          </a>
-          <a class="testing-links__item" href="/">
-            Последовательность загрузки объектов
-            <img class="testing-links__icon" src="img/load-test.svg" width="41" height="41" alt="Последовательность загрузки объектов">
-          </a>
-          <a class="testing-links__item" href="/">
-            Статус и время загрузки объектов
-            <img class="testing-links__icon" src="img/speed-test.svg" width="45" height="39" alt="Статус и время загрузки объектов">
-          </a>
-        </div>
-        <p class="testing-content">Используем для тестов </p>
+  <table class="columns">
+      <tr>
+        <td><div id="piechart" style="border: 1px solid #ccc"></div></td>
+        <td><div id="chart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+      <tr>
+        <td><div id="curve_chart" style="border: 1px solid #ccc"></td>
+        <td><div id="chart-items_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
 
-      </section>
-    </main>
+  <div id="main" class="visually-hidden">
+    <table>
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Invoice #</td>
+          <td>Item</td>
+          <td>Unit Price</td>
+          <td>Number of Units Purchased</td>
+          <td>Store</td>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
   </div>
-  <script src="js/main.js"></script>
 
+  <script src="js/main.js"></script>
 </body>
 
 </html>
