@@ -142,7 +142,7 @@ function drawPieChart() {
   ]);
 
   var options = {
-    title: 'The number of fruits per period',
+    title: 'Units per period',
     pieHole: 0.4,
     width: 750,
     height: 500,
@@ -175,7 +175,7 @@ function drawBasicOne() {
   ]);
 
   var options = {
-    title: 'Monthly of Units Purchased',
+    title: 'Monthly total purchases',
     width: 750,
     height: 500,
     chartArea: {
@@ -211,7 +211,7 @@ function drawChart() {
   ]);
 
   var options = {
-    title: 'Monthly number of Units Purchased',
+    title: 'Monthly trend of purchases',
     width: 750,
     height: 500,
     curveType: 'function',
